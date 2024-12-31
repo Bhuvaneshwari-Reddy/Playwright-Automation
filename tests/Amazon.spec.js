@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-test('Amazon login and fetch products', async ({ page }) => {
+test.only('Amazon login and fetch products', async ({ page }) => {
   await page.goto('https://www.amazon.in/');
   await page.getByRole('link', { name: 'Sign in' }).click();
   await page.getByLabel('email').fill('7899756761');
@@ -39,7 +39,7 @@ test('Amazon login and fetch products', async ({ page }) => {
       };
       output.push(productDetails);
     }
-    fs.writeFileSync('output.json', JSON.stringify(output, null, 2), 'utf-8');
+    fs.writeFileSync('amazonOutput.json', JSON.stringify(output, null, 2), 'utf-8');
 
   console.log('Product details have been saved to output.json');
 
@@ -56,7 +56,7 @@ test("Flipkart login",async({page})=>{
   await page.getByPlaceholder('Search for products, brands and more').fill("shoe for men");
 
 })
-test.only("Compare prices of shoes on Amazon and Flipkart",async({browser})=>{
+test("Compare prices of shoes on Amazon and Flipkart",async({browser})=>{
   // Create browser contexts for Amazon and Flipkart
 const amazonContext=await browser.newContext();
 const flipkartContext=await browser.newContext();

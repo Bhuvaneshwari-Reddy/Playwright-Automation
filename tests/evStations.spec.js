@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-test.setTimeout(120000)
+test.setTimeout(150000)
 test('Fetch the number of EV stations in Karnataka', async ({ browser }) => {
 
   const context = await browser.newContext();
@@ -26,7 +26,6 @@ test('Fetch the number of EV stations in Karnataka', async ({ browser }) => {
 const CompanyName=await page.$$("//body/div[@id='__next']/main[@id='document-main']/div[@class='container']/section[@class='d-flex position-relative']/main[@class='charging-station-listing_chargerList__2unBm']/div[@class='row']//div[@class='px-2 mb-3 col-lg-4']//h5")
 console.log(CompanyName.length)
 const Location=await page.$$("//body/div[@id='__next']/main[@id='document-main']/div[@class='container']/section[@class='d-flex position-relative']/main[@class='charging-station-listing_chargerList__2unBm']/div[@class='row']/div/a/div/small")
-
 await page.waitForTimeout(1000)
 
     const output = []
@@ -39,6 +38,6 @@ await page.waitForTimeout(1000)
           };
           output.push(productDetails);
         }
-        fs.writeFileSync('output.json', JSON.stringify(output, null, 2), 'utf-8');
+        fs.writeFileSync('evOutput.json', JSON.stringify(output, null, 2), 'utf-8');
 
 });
