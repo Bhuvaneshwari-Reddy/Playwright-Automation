@@ -21,7 +21,8 @@ test('Fetch the number of EV stations in Karnataka', async ({ browser }) => {
     if (currentHeight <= previousHeight) break;
     scrollCount++;
   }
-
+  const allFrames=await page.frames();
+  console.log("Total frames: "+allFrames.length)
 //   await page.waitForSelector("//body/div[@id='__next']/main[@id='document-main']/div[@class='container']/section[@class='d-flex position-relative']/main[@class='charging-station-listing_chargerList__2unBm']/div[@class='row']//div[@class='px-2 mb-3 col-lg-4']").click()
 const CompanyName=await page.$$("//body/div[@id='__next']/main[@id='document-main']/div[@class='container']/section[@class='d-flex position-relative']/main[@class='charging-station-listing_chargerList__2unBm']/div[@class='row']//div[@class='px-2 mb-3 col-lg-4']//h5")
 console.log(CompanyName.length)
